@@ -143,9 +143,9 @@ class Box extends StatelessWidget {
         //       color: Colors.white, fontSize: 8.0, fontFamily: 'Comfortaa'),
         // ),
       ),
-      onPanUpdate: (details) {
+      onTap: () {
         print('Box: row $rowNum, column $columnNum');
-        print('${details.globalPosition.dx}, ${details.globalPosition.dy}');
+        // print('${details.globalPosition.dx}, ${details.globalPosition.dy}');
       },
     );
   }
