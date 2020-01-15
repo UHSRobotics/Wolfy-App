@@ -1,18 +1,7 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(WolfyApp());
-
-class WolfyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Wolfy App',
-        home: new Scouting(),
-        debugShowCheckedModeBanner: false);
-  }
-}
-
 class Scouting extends StatefulWidget {
+  Scouting({Key key}) : super(key: key);
   @override
   _ScoutingState createState() => new _ScoutingState();
 }
@@ -21,6 +10,7 @@ class _ScoutingState extends State<Scouting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -31,9 +21,9 @@ class _ScoutingState extends State<Scouting> {
                 margin: EdgeInsets.only(top: 100.0, left: 25.0),
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  '7721',
+                  'Scouting',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 35.0,
                     fontFamily: 'Comfortaa',
                   ),

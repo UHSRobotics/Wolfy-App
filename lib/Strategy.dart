@@ -1,23 +1,8 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(WolfyApp());
-}
-
-class WolfyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Wolfy App',
-      home: new Strategy(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
 class Strategy extends StatefulWidget {
+  Strategy({Key key}) : super(key: key);
   @override
   _StrategyState createState() => new _StrategyState();
 }
