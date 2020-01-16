@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:wolfy_app/HomeScreen.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-void main() => runApp(WolfyApp());
-
-class WolfyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Wolfy App',
-        home: new LogInScreen(),
-        debugShowCheckedModeBanner: false);
-  }
-}
+GoogleSignIn _googleSignIn = GoogleSignIn(
+  scopes: <String>[
+    'email',
+  ],
+);
 
 class LogInScreen extends StatefulWidget {
+  static String tag = 'login-page';
   @override
   _LogInScreenState createState() => new _LogInScreenState();
 }
@@ -22,21 +18,6 @@ class LogInScreen extends StatefulWidget {
 class _LogInScreenState extends State<LogInScreen> {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
-
-  GoogleSignIn _googleSignIn = GoogleSignIn(
-    scopes: [
-      'email',
-      'https://www.googleapis.com/auth/contacts.readonly',
-    ],
-  );
-
-  Future<void> _handleSignIn() async {
-    try {
-      await _googleSignIn.signIn();
-    } catch (error) {
-      print(error);
-    }
-  }
 
   @override
   void dispose() {
@@ -46,7 +27,19 @@ class _LogInScreenState extends State<LogInScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  
+
+  Widget build(BuildContext context) {   
+  Future<void> _handleSignIn() async {
+    try {
+      await _googleSignIn.signIn();
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  //Future<void> _handleSignOut() => _googleSignIn.disconnect();
+    _googleSignIn.signInSilently();
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
@@ -68,11 +61,7 @@ class _LogInScreenState extends State<LogInScreen> {
               ),
               new Container(
                 width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.only(
-                  top: 25.0,
-                  left: 40.0,
-                  right: 40.0,
-                ),
+                margin: EdgeInsets.only(top: 25.0, left: 40.0, right: 40.0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   border: Border(
@@ -87,15 +76,9 @@ class _LogInScreenState extends State<LogInScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     new Padding(
-                      padding: EdgeInsets.only(
-                        top: 10.0,
-                        bottom: 10.0,
-                        right: 10.0,
-                      ),
-                      child: Icon(
-                        Icons.person_outline,
-                        color: Colors.blue,
-                      ),
+                      padding:
+                          EdgeInsets.only(top: 10.0, bottom: 10.0, right: 10.0),
+                      child: Icon(Icons.person_outline, color: Colors.blue),
                     ),
                     new Expanded(
                         child: TextField(
@@ -103,16 +86,12 @@ class _LogInScreenState extends State<LogInScreen> {
                       keyboardType: TextInputType.text,
                       textInputAction: TextInputAction.done,
                       textAlign: TextAlign.left,
-                      style: new TextStyle(
-                        color: Colors.lightBlue,
-                      ),
+                      style: new TextStyle(color: Colors.lightBlue),
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: 'Username',
                         hintStyle: TextStyle(
-                          color: Colors.blueGrey,
-                          fontFamily: 'Comfortaa',
-                        ),
+                            color: Colors.blueGrey, fontFamily: 'Comfortaa'),
                       ),
                     ))
                   ],
@@ -120,11 +99,8 @@ class _LogInScreenState extends State<LogInScreen> {
               ),
               new Container(
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.only(
-                  left: 40.0,
-                  right: 40.0,
-                  top: 10.0,
-                ),
+                margin:
+                    const EdgeInsets.only(left: 40.0, right: 40.0, top: 10.0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   border: Border(
@@ -134,20 +110,14 @@ class _LogInScreenState extends State<LogInScreen> {
                         style: BorderStyle.solid),
                   ),
                 ),
-                padding: const EdgeInsets.only(
-                  left: 0.0,
-                  right: 10.0,
-                ),
+                padding: const EdgeInsets.only(left: 0.0, right: 10.0),
                 child: new Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     new Padding(
-                      padding: EdgeInsets.only(
-                        top: 10.0,
-                        bottom: 10.0,
-                        right: 10.0,
-                      ),
+                      padding:
+                          EdgeInsets.only(top: 10.0, bottom: 10.0, right: 10.0),
                       child: Icon(
                         Icons.lock_open,
                         color: Colors.blue,
@@ -174,11 +144,8 @@ class _LogInScreenState extends State<LogInScreen> {
               ),
               new Container(
                 width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.only(
-                  left: 40.0,
-                  right: 40.0,
-                  top: 30.0,
-                ),
+                margin:
+                    const EdgeInsets.only(left: 40.0, right: 40.0, top: 30.0),
                 alignment: Alignment.center,
                 child: new Row(
                   children: <Widget>[
@@ -187,26 +154,13 @@ class _LogInScreenState extends State<LogInScreen> {
                         child: Text(
                           'Log In',
                           style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Comfortaa',
-                          ),
+                              color: Colors.white, fontFamily: 'Comfortaa'),
                         ),
                         gradient: LinearGradient(
                           colors: <Color>[Colors.blue, Colors.cyan],
                         ),
                         onPressed: () {
-                          return showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                // Retrieve the text the user has entered by using the
-                                // TextEditingController.
-                                content: Text(
-                                  'Username: ${usernameController.text},\n Password: ${passwordController.text}',
-                                ),
-                              );
-                            },
-                          );
+                          Navigator.of(context).pushNamed(HomePage.tag);
                         },
                       ),
                     ),
@@ -228,17 +182,8 @@ class _LogInScreenState extends State<LogInScreen> {
                           left: 10.0,
                         ),
                         color: Colors.transparent,
-                        onPressed: () {
-                          return showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                content: Text(
-                                  'Please follow the instructions\nsent to your email!',
-                                ),
-                              );
-                            },
-                          );
+                        onPressed: () => {
+                          /* ... */
                         },
                         child: Align(
                           alignment: Alignment.centerLeft,
@@ -281,7 +226,7 @@ class _LogInScreenState extends State<LogInScreen> {
                 width: 180.0,
                 child: new SignInButton(
                   Buttons.GoogleDark,
-                  onPressed: () => _handleSignIn(),
+                  onPressed: _handleSignIn,
                 ),
               ),
             ],
