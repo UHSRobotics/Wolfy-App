@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wolfy_app/HomeScreen.dart';
-import 'LogInScreen.dart';
+import 'login_screen/LogInScreen.dart';
 
 void main() => runApp(WolfyApp());
 
@@ -10,9 +10,9 @@ class WolfyApp extends StatelessWidget {
     HomePage.tag: (context) => HomePage(),
   };
   @override
-  Widget build(BuildContext context){
-   return MaterialApp(
-     title: 'Wolfy App',
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Wolfy App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.lightBlue,

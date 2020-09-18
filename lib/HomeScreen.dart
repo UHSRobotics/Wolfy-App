@@ -86,14 +86,14 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.search,
-              size:20,
-              color: Colors.pink,
+              size: 20,
+              color: Colors.black,
             ),
             title: Text(
               'Scouting',
-              style:TextStyle(
-                fontSize:20, color: Colors.blue, fontFamily: "Comfortaa"),
-              ),
+              style: TextStyle(
+                  fontSize: 20, color: Colors.blue, fontFamily: "Comfortaa"),
+            ),
             activeIcon: Icon(
               Icons.search,
               size: 20,
@@ -103,55 +103,54 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.lightbulb_outline,
-              size:20,
-              color: Colors.pink,
-              ),
+              size: 20,
+              color: Colors.black,
+            ),
             title: Text(
               "Strategy",
               style: TextStyle(
-                fontSize:20, color: Colors.blue, fontFamily: "Comfortaa"),
-              ),
-              activeIcon: Icon(
-                Icons.lightbulb_outline,
-                size:20,
-                color: Colors.blue,
-              ),
+                  fontSize: 20, color: Colors.blue, fontFamily: "Comfortaa"),
+            ),
+            activeIcon: Icon(
+              Icons.lightbulb_outline,
+              size: 20,
+              color: Colors.blue,
+            ),
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.book,
-              size:20,
-              color:Colors.pink,
-              ),
+              size: 20,
+              color: Colors.black,
+            ),
             title: Text(
               "Attendance",
               style: TextStyle(
-                fontSize:20, color: Colors.blue, fontFamily: "Comfortaa"),
-              ), 
-              activeIcon: Icon(
-                Icons.book,
-                size:20,
-                color: Colors.blue,
-              ),
+                  fontSize: 20, color: Colors.blue, fontFamily: "Comfortaa"),
+            ),
+            activeIcon: Icon(
+              Icons.book,
+              size: 20,
+              color: Colors.blue,
+            ),
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.assignment_ind,
-              size:20,
-              color: Colors.pink,
-              ),
-             title: Text(
+              size: 20,
+              color: Colors.black,
+            ),
+            title: Text(
               "Profile",
               style: TextStyle(
-                fontSize:20, color: Colors.blue, fontFamily:"Comfortaa"),
-              ), 
-              activeIcon: Icon(
-                Icons.assignment_ind,
-                size:20,
-                color: Colors.blue,
-              ),
+                  fontSize: 20, color: Colors.blue, fontFamily: "Comfortaa"),
+            ),
+            activeIcon: Icon(
+              Icons.assignment_ind,
+              size: 20,
+              color: Colors.blue,
+            ),
           ),
-        
         ],
       ),
     );
@@ -205,8 +204,6 @@ class _HomePageState extends State<HomePage> {
 //   }
 // }
 
-
-
 //Second Icon
 // class PageTwo extends StatefulWidget {
 //   PageTwo({Key key}) : super(key: key);
@@ -235,30 +232,30 @@ class _HomePageState extends State<HomePage> {
 //   }
 // }
 
-//Third Icon 
-class PageThree extends StatefulWidget{
+//Third Icon
+class PageThree extends StatefulWidget {
   PageThree({Key key}) : super(key: key);
 
   @override
   PageThreeState createState() => PageThreeState();
 }
-class PageThreeState extends State<PageThree>{
-  @override
 
-  Widget build(BuildContext context){
+class PageThreeState extends State<PageThree> {
+  @override
+  Widget build(BuildContext context) {
     return ListView.builder(
-       itemExtent: 250.0,
+      itemExtent: 250.0,
       itemBuilder: (context, index) => Container(
-            padding: EdgeInsets.all(10.0),
-            child: Material(
-              elevation: 4.0,
-              borderRadius: BorderRadius.circular(5.0),
-              color: index % 2 == 0 ? Colors.cyan : Colors.deepOrange,
-              child: Center(
-                child: Text(index.toString()),
-              ),
-            ),
+        padding: EdgeInsets.all(10.0),
+        child: Material(
+          elevation: 4.0,
+          borderRadius: BorderRadius.circular(5.0),
+          color: index % 2 == 0 ? Colors.cyan : Colors.deepOrange,
+          child: Center(
+            child: Text(index.toString()),
           ),
+        ),
+      ),
     );
   }
 }
